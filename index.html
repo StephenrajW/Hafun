@@ -1,0 +1,67 @@
+<?php 
+$name = test_input($_POST["name"]);
+
+ 
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  $arr = array( "a"=>" அவர்கள் போன ஜென்மத்தில் குரங்காக இருந்தார் , பிடுங்கி தின்பதை வாடிக்கையாக கொண்டிருந்தார் ", 
+          "b"=>"அவர்கள் போன ஜென்மத்தில் கழுதையாக  இருந்தார் ,மூட்டை தூக்குவதில் வல்லவர்  ", 
+          "c"=>" அவர்கள் போன ஜென்மத்தில் சிங்கமாக    இருந்தார் ,ஆனால் காட்டுக்கு ராஜா இல்லை   ", 
+          "d"=>"அவருக்கு போன ஜென்மமே இல்லை" );
+  shuffle($arr);
+
+
+  $cookie_name = $name;
+  $cookie_value = $arr;
+  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+  if(!isset($_COOKIE[$cookie_name])) {
+    echo "Cookie named '" . $cookie_name . "' is not set!";
+  } else {
+    echo "Cookie '" . $cookie_name . "' is set!<br>";
+    echo "Value is: " . $_COOKIE[$cookie_name];
+  }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <section>
+    
+    
+         <div class="container">
+         <img src="image/laugh2.gif" alt="This is an animated gif image ;)"  width="150px" id="gif">
+           
+         <h1 class="hero-head"> உங்கள் நண்பர் <?php echo$name; ?> போன ஜென்மத்தில் என்னவாக  பிறந்துள்ளார்  என அறிய Whatsapp share பட்டனை Click செய்யவும்  </h1>
+         <a href="whatsapp://send?text=  <?php   echo $name; ?>   <?php   echo $arr[0]; ?>"> Share</a>
+         </div>
+
+         
+
+
+     </section>
+
+     <footer> <p style="font-size:4px;text-align:center;"> Note:The above game is only for Fun, Not to hurt anyone</p></footer>
+    
+
+</body>
+</html>
+
+<?php 
+
+
+
+
+?>
